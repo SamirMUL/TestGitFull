@@ -1,0 +1,43 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "name": "38f2865eac87ecb5ac5e",
+  "position": {
+    "x": 391,
+    "y": 129,
+    "z": 3,
+    "height": 279,
+    "width": 280,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "octopus_spla_export(in) (2)"
+                        }
+                      },
+                      "Property": "customer_name"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(octopus_spla_export(in) (2).customer_name)",
+              "nativeQueryRef": "Premier customer_name"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
