@@ -1,0 +1,20 @@
+model Model
+	culture: fr-FR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-001
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["octopus_spla_export(in) (2)"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.139.1733.0 (24.12)+af51d793b3eacaf90fc70909aa713164bbd22a66
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table 'octopus_spla_export(in) (2)'
+
+ref cultureInfo fr-FR
+

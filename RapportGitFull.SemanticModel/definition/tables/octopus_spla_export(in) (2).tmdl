@@ -1,0 +1,177 @@
+table 'octopus_spla_export(in) (2)'
+	lineageTag: 5be0a7e4-2ccd-475b-b734-94a518502832
+
+	column context
+		dataType: string
+		lineageTag: 2fca8e36-7b9e-4c4e-bfe3-b7ca6156b2c7
+		summarizeBy: none
+		sourceColumn: context
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_group_name
+		dataType: string
+		lineageTag: 9d0b9094-d341-4357-bcc3-37ef66ea7122
+		summarizeBy: none
+		sourceColumn: customer_group_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_name
+		dataType: string
+		lineageTag: 6a525c77-327e-4572-93af-5306844800e0
+		summarizeBy: none
+		sourceColumn: customer_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_internal_id
+		dataType: int64
+		formatString: 0
+		lineageTag: e0091060-e38b-4dab-99cb-a3300fe8b8d3
+		summarizeBy: sum
+		sourceColumn: customer_internal_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column object_ou
+		dataType: string
+		lineageTag: 795c5a0a-a9af-4a53-bc1c-f106455b38d5
+		summarizeBy: none
+		sourceColumn: object_ou
+
+		annotation SummarizationSetBy = Automatic
+
+	column object_extra_fields
+		dataType: string
+		lineageTag: 9e48a919-dd1f-4736-bde7-0298cc63e31f
+		summarizeBy: none
+		sourceColumn: object_extra_fields
+
+		annotation SummarizationSetBy = Automatic
+
+	column object_office_location
+		dataType: string
+		lineageTag: f97ebd54-8ea2-4327-a611-43c7dd1a0fc3
+		summarizeBy: none
+		sourceColumn: object_office_location
+
+		annotation SummarizationSetBy = Automatic
+
+	column object_name
+		dataType: string
+		lineageTag: 6d8a3a0c-0762-451d-b972-28526d56c7aa
+		summarizeBy: none
+		sourceColumn: object_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column object_deleted
+		dataType: string
+		lineageTag: 2c710f79-0de5-4971-bdfb-e92cbc7815f2
+		summarizeBy: none
+		sourceColumn: object_deleted
+
+		annotation SummarizationSetBy = Automatic
+
+	column installed_software_name
+		dataType: string
+		lineageTag: 5ed6db85-a7ef-4cde-ab00-6c703735cd94
+		summarizeBy: none
+		sourceColumn: installed_software_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column installed_software_access_devices
+		dataType: string
+		lineageTag: 98b0141a-9f2f-4130-84c3-e03e526b1408
+		summarizeBy: none
+		sourceColumn: installed_software_access_devices
+
+		annotation SummarizationSetBy = Automatic
+
+	column installed_software_remote_access_groups
+		dataType: string
+		lineageTag: 6ce422df-9ddd-42e3-ae64-2a5f62988eed
+		summarizeBy: none
+		sourceColumn: installed_software_remote_access_groups
+
+		annotation SummarizationSetBy = Automatic
+
+	column installed_software_deleted
+		dataType: string
+		lineageTag: 29f876a2-fff2-466f-b95d-8f65c2af6358
+		summarizeBy: none
+		sourceColumn: installed_software_deleted
+
+		annotation SummarizationSetBy = Automatic
+
+	column license_part_number
+		dataType: string
+		lineageTag: af31658e-6880-4f58-9941-42466e7c3116
+		summarizeBy: none
+		sourceColumn: license_part_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column license_vendor_part_number
+		dataType: string
+		lineageTag: 211d269c-f162-428a-9622-06b550cad739
+		summarizeBy: none
+		sourceColumn: license_vendor_part_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column license_own_part_number
+		dataType: string
+		lineageTag: 2a786525-1b11-4dfd-ade1-5a139a6d8bfc
+		summarizeBy: none
+		sourceColumn: license_own_part_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column license_readable_name
+		dataType: string
+		lineageTag: af6b1811-8c13-4bc1-bbfc-9be719371215
+		summarizeBy: none
+		sourceColumn: license_readable_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column license_name
+		dataType: string
+		lineageTag: d5320adb-36f8-4f15-bb13-9ae6f013261b
+		summarizeBy: none
+		sourceColumn: license_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column license_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 991100d2-0d38-4251-814b-b4a85bfd5b3c
+		summarizeBy: sum
+		sourceColumn: license_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column observation_period,,,,,,,,,,,,,
+		dataType: string
+		lineageTag: 70dc2177-c24d-4545-bfb9-76a3d344745c
+		summarizeBy: none
+		sourceColumn: observation_period,,,,,,,,,,,,,
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'octopus_spla_export(in) (2)' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\smouffok\Downloads\TestFullGit\TestGitFull\octopus_spla_export(in) (2).csv"),[Delimiter=";", Columns=20, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"context", type text}, {"customer_group_name", type text}, {"customer_name", type text}, {"customer_internal_id", Int64.Type}, {"object_ou", type text}, {"object_extra_fields", type text}, {"object_office_location", type text}, {"object_name", type text}, {"object_deleted", type text}, {"installed_software_name", type text}, {"installed_software_access_devices", type text}, {"installed_software_remote_access_groups", type text}, {"installed_software_deleted", type text}, {"license_part_number", type text}, {"license_vendor_part_number", type text}, {"license_own_part_number", type text}, {"license_readable_name", type text}, {"license_name", type text}, {"license_count", Int64.Type}, {"observation_period,,,,,,,,,,,,,", type text}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_ResultType = Table
+

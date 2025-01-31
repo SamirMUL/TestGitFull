@@ -1,0 +1,66 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "name": "c22aae01852a697d9820",
+  "position": {
+    "x": 90.471915839551443,
+    "y": 80.032848627295508,
+    "z": 0,
+    "height": 279.53502201707562,
+    "width": 279.53502201707562,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "octopus_spla_export(in) (2)"
+                        }
+                      },
+                      "Property": "context"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "Min(octopus_spla_export(in) (2).context)",
+              "nativeQueryRef": "Nombre de context"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "octopus_spla_export(in) (2)"
+                      }
+                    },
+                    "Property": "context"
+                  }
+                },
+                "Function": 5
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
